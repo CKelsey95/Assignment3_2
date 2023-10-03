@@ -20,13 +20,10 @@ move $t0, $v0           # reads input from user and stores in $t0
 
 
 beq $t0, $t1, good            # branches if useranswer = correct
-j error                       # else: jump to error message
-
-error:                        # prints error message and jumpt to terminate line
-la $a0, errormessage
+la $a0, errormessage          # loads and prints error message
 li $v0, 4
 syscall
-j exit 
+j exit                        # jumps to exit
 
 good:
 la $a0, goodmessage           #prints correct answer message
